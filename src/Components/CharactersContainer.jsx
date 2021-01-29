@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CharactersContainer({ characters, handleDelte }) {
+function CharactersContainer({ characters, handleDelete }) {
     return (
         <section>
             <h3>New Character:</h3>
