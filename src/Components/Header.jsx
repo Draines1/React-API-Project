@@ -3,8 +3,7 @@ import React from 'react';
 function Header() {
     return (
         <header>
-            <h1>The World of Marvel!</h1>
-            <p>&copy; 2021 Darren Raines</p>
+            <h1>Hmmm...What to watch?</h1>
         </header>
     );
 }

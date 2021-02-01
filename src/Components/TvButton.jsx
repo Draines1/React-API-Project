@@ -1,13 +1,13 @@
 import React from 'react';
 
-function CharacterButton(props) {
+function TvButton(props) {
     return (
         <nav>
             <button onClick={props.handleClick}>
-                Get a new Character!
+                Binge Away!
             </button>
         </nav>
     );
 }
 
-export default CharacterButton;
+export default TvButton;

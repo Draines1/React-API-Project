@@ -1,37 +1,38 @@
 import './App.css';
 import Header from './Components/Header';
-import CharacterButton from './Components/CharacterButton';
-import CharactersContainer from './Components/CharactersContainer';
+import TvButton from './Components/TvButton';
+import TvShowContainer from './Components/TvShowContainer';
 import Tvshows from './Components/Tvshows';
 
-import {
-        BrowserRouter as Router,
-        Switch,
-        Route,
-        Link,
-        Redirect,
-} from 'react-router-dom';
+// import {
+//         BrowserRouter as Router,
+//         Switch,
+//         Route,
+//         Link,
+//         Redirect,
+// } from 'react-router-dom';
 
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [characterArray, setCharacterArray] = useState([]);
+  const [tvshowArray] = useState([]);
 
-  async function getCharacter(characterRole) {
-    const response = await fetch('http://api.tvmaze.com/shows/1', {
-      headers: {
-          Accept: 'application/json'
-        },
-      }
+  async function getTvShow() {
+    const response = await fetch(
+      'http://api.tvmaze.com/shows') 
+      .then(r=>r.json())
+      .then(results => results)
     
-    );
-    const characterData = await response.json();
-      setCharacterArray(data.results)
+    console.log(response)
+    
+  //const characterData = await response.json();
+      //settvshowArray(data.results)
 
   }
-    console.log(characterData);
-    useEffect(() => {
-            getTvshow();
+    // console.log(characterData);
+    
+      useEffect(() => {
+           getTvShow();
     
   }, []);
 
@@ -41,18 +42,18 @@ function App() {
   }
 
   return (
-    <Router>
+    //<Router>
       <div className="App">
         <header className="App-header">
           <Header />
-          <CharacterButton handleClick={getCharacter}/>
-          <CharactersContainer
-            characters={characterArray}
+          <TvButton handleClick={getTvShow}/>
+          <TvShowContainer
+            tvshows={tvshowArray}
           />
           <Tvshows />
         </header>
       </div>
-    </Router>
+    //</Router>
   );
 }
 
