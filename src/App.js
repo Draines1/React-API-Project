@@ -2,48 +2,57 @@ import './App.css';
 import Header from './Components/Header';
 import CharacterButton from './Components/CharacterButton';
 import CharactersContainer from './Components/CharactersContainer';
+import Tvshows from './Components/Tvshows';
 
+import {
+        BrowserRouter as Router,
+        Switch,
+        Route,
+        Link,
+        Redirect,
+} from 'react-router-dom';
 
-
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [characterArray, setCharacterArray] = useState([]);
 
-  async function getCharacter() {
-    const characterPromise = fetch('', {
+  async function getCharacter(characterRole) {
+    const response = await fetch('http://api.tvmaze.com/shows/1', {
       headers: {
           Accept: 'application/json'
+        },
       }
-    });
-    const response = await characterPromise;
+    
+    );
     const characterData = await response.json();
+      setCharacterArray(data.results)
 
-    console.log(characterData);
-    setCharacterArray([
-      ...characterArray,
-      characterData
-    ]);
   }
+    console.log(characterData);
+    useEffect(() => {
+            getTvshow();
+    
+  }, []);
 
-  function deleteCharacter(id) {
-    console.log(`You want to delete ${id}`);
-    const filiteredArray = characterArray(j=> j.id !==id);
+{
 
-    setCharacterArray(characterArray)
+  
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Header />
-        <CharacterButton handleClick={getCharacter}/>
-        <CharactersContainer
-          characters={characterArray}
-          handleDelte={deleteCharacter}
-        />
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Header />
+          <CharacterButton handleClick={getCharacter}/>
+          <CharactersContainer
+            characters={characterArray}
+          />
+          <Tvshows />
+        </header>
+      </div>
+    </Router>
   );
 }
 

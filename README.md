@@ -1,4 +1,5 @@
-# Marvel API Project
+# TVshows API Project
+(Originally I went with Marvel's API, but switched to this free TVshows API)
 This is a short project design to better undestand the React fundamentals. 
 ## Requirements
 - Must use React
